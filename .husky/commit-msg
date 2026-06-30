@@ -1,1 +1,20 @@
+#!/usr/bin/env sh
+
 pnpm exec commitlint --edit "$1"
+
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+  echo ""
+  echo "❌ Invalid commit message."
+  echo ""
+  echo "Please follow the Conventional Commits format."
+  echo ""
+  echo "Examples:"
+  echo "  feat(payments): add payment page"
+  echo "  fix(auth): resolve login bug"
+  echo "  chore(deps): update dependencies"
+  echo "  refactor(auth): simplify auth flow"
+  echo ""
+  exit 1
+fi
