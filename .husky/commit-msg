@@ -5,7 +5,6 @@ pnpm exec commitlint --edit "$1"
 STATUS=$?
 
 if [ $STATUS -ne 0 ]; then
-  echo ""
   echo "❌ Invalid commit message."
   echo ""
   echo "Please follow the Conventional Commits format."
@@ -18,3 +17,5 @@ if [ $STATUS -ne 0 ]; then
   echo ""
   exit 1
 fi
+
+echo "✅ Commit message passed!"

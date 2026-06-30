@@ -1,6 +1,28 @@
+#!/usr/bin/env sh
+
 echo "🔍 Running pre-commit checks..."
 
-# Run linting + formatting on staged files
-pnpm lint
+# Abort if there are unstaged changes
+if ! git diff --quiet; then
+  echo ""
+  echo "❌ Commit aborted."
+  echo "You have unstaged changes."
+  echo ""
+  echo "Please stage or stash your changes before committing."
+  echo ""
+  git status --short
+  exit 1
+fi
+
+
+if ! pnpm lint; then
+  echo "❌ Linting failed."
+  exit 1
+fi
+
+if ! pnpm type-check; then
+  echo "❌ Type checking failed."
+  exit 1
+fi
 
 echo "✅ Pre-commit passed!"
