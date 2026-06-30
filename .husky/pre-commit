@@ -1,7 +1,15 @@
+#!/usr/bin/env sh
+
 echo "🔍 Running pre-commit checks..."
 
-# Run linting + formatting on staged files
-pnpm lint
-pnpm type-check
+if ! pnpm lint; then
+  echo "❌ Linting failed."
+  exit 1
+fi
+
+if ! pnpm type-check; then
+  echo "❌ Type checking failed."
+  exit 1
+fi
 
 echo "✅ Pre-commit passed!"
