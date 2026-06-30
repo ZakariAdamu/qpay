@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2563eb;
+    --color-secondary: #9333ea;
+
+    --font-display: "Inter", sans-serif;
+}
+
+@layer utilities {
+    .input-class {
+        @apply text-lg placeholder:text-lg rounded-lg border border-gray-300 text-gray-500 placeholder:text-gray-500;
+    }
+
+    .sheet-content button {
+        @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none;
+    }
+
+    .text14_padding10 {
+        @apply text-[14px] px-4 py-2.5 font-semibold;
+    }
+
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+}
